@@ -1,0 +1,19 @@
+# vim: set ft=yaml :
+#
+# This file serves as a development representation of what GoodForPoc looks
+# like.
+#
+---
+version: '2'
+services:
+  db:
+    image: postgres:alpine
+  cache:
+    image: redis:alpine
+  api:
+    build: .
+    links:
+      - db:db
+      - cache:cache
+    ports:
+      - 4242:4242
