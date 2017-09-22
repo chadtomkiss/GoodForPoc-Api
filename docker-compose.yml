@@ -6,14 +6,9 @@
 ---
 version: '2'
 services:
-  db:
-    image: postgres:alpine
-  cache:
-    image: redis:alpine
   api:
     build: .
+    env_file: .env.api
     links:
       - db:db
       - cache:cache
-    ports:
-      - 4242:4242
