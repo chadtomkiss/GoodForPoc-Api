@@ -11,7 +11,7 @@ Sequel.migration do
         String :location
         String :website_uri
         String :careers_uri
-        Float :rating
+        BigDecimal :rating, size: [8, 2]
 
         DateTime :created_at, default: Sequel::SQL::Function.new(:now)
         DateTime :updated_at, default: Sequel::SQL::Function.new(:now)
