@@ -18,4 +18,4 @@ ADD . $APP_DIR/
 VOLUME ["$APP_DIR/", "/usr/local/bundle"]
 
 ENTRYPOINT ["bundle", "exec"]
-CMD ["rake", "serve"]
+CMD ["puma", "-C", "config/puma.rb"]
