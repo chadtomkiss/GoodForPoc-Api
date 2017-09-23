@@ -9,8 +9,8 @@ up and running for the API. No need to have them on your host machine.
 ## Things To Use
 
   * :rocket: `docker-compose up` - Gets the whole setup running.
-  * :hammer: `docker-compose run api rake dev:setup` - Does some initial setup for development.
-  * :question: `docker-compose run api rake help` - Lists all of the commands available.
+  * :hammer: `docker-compose run api dev:setup` - Does some initial setup for development.
+  * :question: `docker-compose run api -AT` - Lists all of the commands available.
 
 [docker]: http://docker.com
 [docker compose]: https://docs.docker.com/compose
