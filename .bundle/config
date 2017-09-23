@@ -1,2 +1,6 @@
 ---
-BUNDLE_WITHOUT: ":development"
+BUNDLE_WITHOUT: "development:test"
+BUNDLE_BINSTUBS: "bin"
+BUNDLE_FROZEN: "true"
+BUNDLE_IGNORE_MESSAGES: "true"
+BUNDLE_BUILD__NOKOGIRI: "--use-system-libraries"
