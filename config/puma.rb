@@ -5,7 +5,7 @@ directory ENV['APP_DIR']
 
 rackup "#{ENV['APP_DIR']}/config.ru"
 
-environment ENV.get('APP_ENV', 'production')
+environment ENV['APP_ENV']
 
 daemonize false
 pidfile nil
@@ -13,6 +13,9 @@ state_path nil
 
 stdout_redirect nil
 stdout_redirect nil
+
+pidfile '/var/run/puma.pid'
+state_path '/tmp/puma.state'
 
 threads 1, 32
 
@@ -26,10 +29,13 @@ bind "tcp://0.0.0.0:#{ENV['APP_PORT']}"
 # on_restart do
 #   puts 'On restart...'
 # end
+restart_command "#{ENV['APP_DIR']}/bin/puma"
+prune_bundler
+preload_app!
 
 # === Cluster mode ===
 
-workers 8
+# workers 0
 
 # Code to run immediately before the master starts workers.
 #
@@ -73,5 +79,3 @@ workers 8
 
 preload_app!
 tag 'g4poc-api'
-worker_timeout 60
-worker_boot_timeout 60
