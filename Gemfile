@@ -1,12 +1,22 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem "graphql"
-gem "sinatra"
-gem "puma"
+group :http do
+  gem 'graphql'
+  gem 'puma'
+  gem 'sinatra'
+end
 
 group :data do
   gem 'pg'
   gem 'sequel'
-  # TODO: Do we need Redis?
-  # gem 'ohm'
+end
+
+group :tasks do
+  gem 'rake'
+end
+
+group :test do
+  gem 'rspec'
 end

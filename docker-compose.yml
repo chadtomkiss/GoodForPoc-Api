@@ -4,11 +4,20 @@
 # like.
 #
 ---
-version: '2'
+version: '2.1'
 services:
   api:
     build: .
-    env_file: .env.api
-    links:
-      - db:db
-      - cache:cache
+    environment:
+      - "RACK_ENV=development"
+      - "API_PORT=9292"
+      - "BUNDLE_FROZEN="
+      - "BUNDLE_CACHE=/var/cache/app-gems"
+    ports:
+      - '${API_PORT-9292}:9292'
+    volumes:
+      - '.:/app'
+      - 'api_ruby_gems:/var/cache/app-gems'
+volumes:
+  api_ruby_gems:
+    driver: local

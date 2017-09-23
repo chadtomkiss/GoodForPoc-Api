@@ -10,11 +10,11 @@ ADD scripts $APP_DIR/scripts
 RUN apk --update add --virtual build_deps \
     build-base ruby-dev libc-dev linux-headers \
     openssl-dev postgresql-dev libxml2-dev libxslt-dev && \
-    $APP_DIR/scripts/build \
+    bundle install --verbose --binstubs && \
     apk del build_deps
 
 ADD . $APP_DIR/
 VOLUME ["$APP_DIR/"]
 
 CMD ["bundle", "exec"]
-ENTRYPOINT $APP_DIR/scripts/run
+ENTRYPOINT ["rake"]
