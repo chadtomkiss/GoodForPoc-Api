@@ -6,12 +6,22 @@
 ---
 version: '2.1'
 services:
+  psql:
+    image: postgres:alpine
+    environment:
+      - 'POSTGRES_USER=g4poc'
+      - 'POSTGRES_PASSWORD="*(g4p0c_"'
+    volumes:
+      - 'api_data:/var/lib/postgresql'
   api:
     build: .
     environment:
-      - "APP_PORT=9292"
-      - "APP_ENV=development"
-      - "BUNDLE_CACHE=/var/cache/app-gems"
+      - 'APP_PORT=9292'
+      - 'APP_ENV=development'
+      - 'BUNDLE_CACHE=/var/cache/app-gems'
+      - 'DATABASE_URL=psql://psql:5432'
+    depends_on:
+      - psql
     ports:
       - '${API_PORT-9292}:9292'
     volumes:
@@ -22,4 +32,6 @@ volumes:
   api_ruby_gems:
     driver: local
   api_ruby_cache:
+    driver: local
+  api_data:
     driver: local
