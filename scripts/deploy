@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Unshallow-ify the repository.
+git fetch --unshallow || true
+
+# Get the latest changes.
+get fetch origin "+refs/heads/*:refs/remotes/origin/*"
+
+# TODO: Change app name depending on branch name.
+git remote add dokku dokku@dokku.goodforpocin.tech:api
+
+CURRENT_SHA=$(git rev-parse HEAD)
+
+export
+
+git push dokku "master:${CURRENT_SHA}"
