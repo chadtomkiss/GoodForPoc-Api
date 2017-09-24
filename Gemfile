@@ -40,4 +40,10 @@ group :test do
 
   # Code style checking.
   gem 'rubocop'
+
+  # Coverage detection.
+  gem 'simplecov'
+
+  # Remote collection of coverage.
+  gem 'codecov'
 end
