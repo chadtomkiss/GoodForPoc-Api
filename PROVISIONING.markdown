@@ -1,7 +1,8 @@
 # Setting Up a Server
 
 So you're the lucky devops person :construction:! Dope. Follow these steps to deploy
-new configuration for GoodForPoc.
+new configuration for GoodForPoc. You'll need to have Ansible locally installed on your
+personal machine.
 
 ## Steps
 
