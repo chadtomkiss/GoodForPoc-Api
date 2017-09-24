@@ -5,7 +5,7 @@ ssh_server_password_login: True
 ssh_client_password_login: True
 ssh_allow_groups: "ssh"
 ssh_listen_to:
-  - "0.0.0.0"
+  - ssh.goodforpocin.tech
 sysctl_config:
   net.ipv4.conf.all.arp_announce: 2
   net.ipv4.conf.all.arp_ignore: 1
