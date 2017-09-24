@@ -5,7 +5,7 @@ directory ENV['APP_DIR']
 
 rackup "#{ENV['APP_DIR']}/config.ru"
 
-environment ENV['APP_ENV']
+environment ENV['ENV']
 
 daemonize false
 pidfile nil
