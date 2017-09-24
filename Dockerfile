@@ -1,7 +1,10 @@
 FROM ruby:2.4.1-alpine
 LABEL maintainer "Jacky Alcine <jacky@goodforpocin.tech>"
 
-ENV DATABASE_URL RACK_ENV PORT APP_DIR=/app
+ARG DATABASE_URL
+ARG RACK_ENV=production
+ARG PORT=5000
+ARG APP_DIR=/app
 WORKDIR $APP_DIR
 
 ADD Gemfile* $APP_DIR/
