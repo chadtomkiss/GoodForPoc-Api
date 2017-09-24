@@ -1,7 +1,6 @@
 ---
 language: ruby
 before_script:
-  - bundle config --local --delete without 
-  - bundle install --with development,test
+  - BUNDLE_WITHOUT="" bundle install --verbose
 script:
   - bundle exec rake test
