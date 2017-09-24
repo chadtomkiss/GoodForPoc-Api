@@ -46,4 +46,4 @@ group :test do
 
   # Code style checking.
   gem 'rubocop'
-:end
+end
