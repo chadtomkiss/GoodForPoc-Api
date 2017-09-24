@@ -1,7 +1,7 @@
 FROM ruby:2.4.1-alpine
 LABEL maintainer "Jacky Alcine <jacky@goodforpocin.tech>"
 
-ARG ENV
+ARG ENV DATABASE_URL
 ENV APP_DIR /app
 WORKDIR $APP_DIR
 
