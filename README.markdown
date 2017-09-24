@@ -5,6 +5,8 @@ It was founded by Amélie Lamont, Catt Small and Jacky Alciné. After running fo
 ourselves, we realized we needed help. This project is now open source. Please
 [view the roadmap][roadmap] to understand what kinds of contributions we are looking for.
 
+[![Build Status](https://travis-ci.org/goodforpoc/goodforpoc-api.svg?branch=master)](https://travis-ci.org/goodforpoc/goodforpoc-api)
+
 ## Getting Started
 Check the [Setting Up][setup] guide. Also read the [contribution guidelines][contrib] to learn more about helping with this project.
 

@@ -1,2 +1,6 @@
 ---
 language: ruby
+before_script:
+  - bundle install --with development,test
+script:
+  - bundle exec rake test
