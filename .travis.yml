@@ -1,0 +1,7 @@
+---
+language: ruby
+before_script:
+  - bundle config --delete without
+  - bundle install --verbose
+script:
+  - bundle exec rake test

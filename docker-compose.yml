@@ -4,16 +4,34 @@
 # like.
 #
 ---
-version: '2'
+version: '2.1'
 services:
-  db:
+  psql:
     image: postgres:alpine
-  cache:
-    image: redis:alpine
+    environment:
+      - 'POSTGRES_USER=g4poc'
+      - 'POSTGRES_PASSWORD="*(g4p0c_"'
+    volumes:
+      - 'api_data:/var/lib/postgresql'
   api:
     build: .
-    links:
-      - db:db
-      - cache:cache
+    environment:
+      - 'APP_PORT=9292'
+      - 'APP_ENV=development'
+      - 'BUNDLE_CACHE=/var/cache/app-gems'
+      - 'DATABASE_URL=psql://psql:5432'
+    depends_on:
+      - psql
     ports:
-      - 4242:4242
+      - '${API_PORT-9292}:9292'
+    volumes:
+      - '.:/app'
+      - 'api_ruby_cache:/var/cache/app-gems'
+      - 'api_ruby_gems:/usr/local/bundle'
+volumes:
+  api_ruby_gems:
+    driver: local
+  api_ruby_cache:
+    driver: local
+  api_data:
+    driver: local
