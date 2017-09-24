@@ -16,8 +16,8 @@ services:
   api:
     build: .
     environment:
-      - 'APP_PORT=9292'
-      - 'ENV=development'
+      - 'PORT=9292'
+      - 'RACK_ENV=development'
       - 'BUNDLE_CACHE=/var/cache/app-gems'
       - 'DATABASE_URL=psql://psql:5432'
     depends_on:

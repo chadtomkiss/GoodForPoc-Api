@@ -5,7 +5,7 @@ directory ENV['APP_DIR']
 
 rackup "#{ENV['APP_DIR']}/config.ru"
 
-environment ENV['ENV']
+environment ENV['RACK_ENV']
 
 daemonize false
 pidfile nil
@@ -19,7 +19,7 @@ state_path '/tmp/puma.state'
 
 threads 1, 32
 
-bind "tcp://0.0.0.0:#{ENV['APP_PORT']}"
+bind "tcp://0.0.0.0:#{ENV['PORT']}"
 
 # Code to run before doing a restart. This code should
 # close log files, database connections, etc.
