@@ -4,13 +4,9 @@
 git fetch --unshallow || true
 
 # Get the latest changes.
-get fetch origin "+refs/heads/*:refs/remotes/origin/*"
+git fetch origin "+refs/heads/*:refs/remotes/origin/*"
 
-# TODO: Change app name depending on branch name.
-git remote add dokku dokku@dokku.goodforpocin.tech:api
+git remote add dokku-prod dokku@dokku.goodforpocin.tech:api-prod
+git remote add dokku-staging dokku@dokku.goodforpocin.tech:api-staging
 
-CURRENT_SHA=$(git rev-parse HEAD)
-
-export
-
-git push dokku "master:${CURRENT_SHA}"
+git push "dokku-$1" "${TRAVIS_COMMIT}:master"
