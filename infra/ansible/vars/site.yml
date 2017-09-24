@@ -28,5 +28,6 @@ firewall_allowed_tcp_ports:
   - "22"    # SSH support.
   - "80"    # HTTP support.
   - "443"   # HTTPS support.
+  - "60002" # Mosh support.
 firewall_disable_firewalld: False
 firewall_disable_ufw: True
