@@ -1,4 +1,4 @@
-#!/usr/bin/env -x puma
+#!/usr/bin/env puma
 # frozen_string_literal: true
 
 directory ENV['APP_DIR']
@@ -17,7 +17,7 @@ state_path '/tmp/puma.state'
 
 threads 1, 32
 
-bind "tcp://0.0.0.0:#{ENV['PORT']}"
+bind 'tcp://0.0.0.0:' + ENV['PORT']
 
 # Code to run before doing a restart. This code should
 # close log files, database connections, etc.

@@ -23,7 +23,7 @@ services:
     depends_on:
       - psql
     ports:
-      - '${API_PORT-9292}:9292'
+      - '${PORT-9292}:9292'
     volumes:
       - '.:/app'
       - 'api_ruby_cache:/var/cache/app-gems'
