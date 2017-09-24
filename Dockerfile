@@ -4,7 +4,7 @@ LABEL maintainer "Jacky Alcine <jacky@goodforpocin.tech>"
 ARG DATABASE_URL
 ARG RACK_ENV=production
 ARG PORT=5000
-ARG APP_DIR=/app
+ENV APP_DIR=/app
 WORKDIR $APP_DIR
 
 ADD Gemfile* $APP_DIR/
