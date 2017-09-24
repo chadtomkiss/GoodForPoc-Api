@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: Provide a 'db:seed' command.
-# TODO: Provide a 'db:migrate' command.
-
 begin
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:test)
