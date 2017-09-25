@@ -16,6 +16,10 @@ deploy:
     script: scripts/deploy staging
     on:
       branch: develop
+addons:
+  ssh_known_hosts:
+    - dokku.goodforpocin.tech
+    - github.com
 
 notifications:
   webhooks:
