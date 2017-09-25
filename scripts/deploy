@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
 eval "$(ssh-agent -s)"
-chmod 600 .travis/deploy_key.pem # this key should have push access
-ssh-add .travis/deploy_key.pem
-# Unshallow-ify the repository.
-git fetch --unshallow || true
 
 # Get the latest changes.
 git fetch origin
