@@ -16,3 +16,11 @@ deploy:
     script: scripts/deploy staging
     on:
       branch: develop
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/d9bba348105e7154a7b6
+    on_success: always
+    on_failure: always
+    on_start: always
