@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Unshallow-ify the repository.
+git fetch --unshallow || true
+
+# Get the latest changes.
+git fetch origin "+refs/heads/*:refs/remotes/origin/*"
+
+git remote add dokku-prod dokku@dokku.goodforpocin.tech:api-prod
+git remote add dokku-staging dokku@dokku.goodforpocin.tech:api-staging
+
+git push "dokku-$1" "${TRAVIS_COMMIT}:master"

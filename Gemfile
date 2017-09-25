@@ -2,35 +2,29 @@
 
 source 'https://rubygems.org'
 
-group :http do
-  # Querying language of client
-  gem 'graphql'
+# Querying language of client
+gem 'graphql'
 
-  # Web server of choice.
-  gem 'puma'
+# Web server of choice.
+gem 'puma'
 
-  # Micro web-framework of choice.
-  gem 'sinatra'
+# Micro web-framework of choice.
+gem 'sinatra'
 
-  # Secure secret generation.
-  gem 'sysrandom'
-end
+# Secure secret generation.
+gem 'sysrandom'
 
-group :data do
-  # Use Postgres.
-  gem 'pg'
+# Use Postgres.
+gem 'pg'
 
-  # ORM for Postgres.
-  gem 'sequel'
+# ORM for Postgres.
+gem 'sequel'
 
-  # Tasks for Postgres.
-  gem 'sequel-rake'
-end
+# Tasks for Postgres.
+gem 'sequel-rake'
 
-group :tasks do
-  # Task runner.
-  gem 'rake'
-end
+# Task runner.
+gem 'rake'
 
 group :development do
   # Extra features for Rack.

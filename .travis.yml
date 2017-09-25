@@ -1,10 +1,21 @@
 ---
 language: ruby
+env:
+  - ENV=test
 before_script:
   - bundle config --delete without
   - bundle install --verbose
 script:
   - bundle exec rake test
+deploy:
+  - provider: script
+    script: scripts/deploy prod
+    on:
+      branch: master
+  - provider: script
+    script: scripts/deploy staging
+    on:
+      branch: develop
 
 notifications:
   webhooks:

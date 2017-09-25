@@ -16,18 +16,19 @@ services:
   api:
     build: .
     environment:
-      - 'APP_PORT=9292'
-      - 'APP_ENV=development'
-      - 'BUNDLE_CACHE=/var/cache/app-gems'
+      - 'PORT=9292'
+      - 'RACK_ENV=development'
+      - 'BUNDLE_CACHE=/app/vendor/cache'
       - 'DATABASE_URL=psql://psql:5432'
+      - 'APP_DIR=/app'
     depends_on:
       - psql
     ports:
-      - '${API_PORT-9292}:9292'
+      - '${PORT-9292}:9292'
     volumes:
       - '.:/app'
-      - 'api_ruby_cache:/var/cache/app-gems'
-      - 'api_ruby_gems:/usr/local/bundle'
+      - 'api_ruby_cache:/app/vendor/cache'
+      - 'api_ruby_gems:/app/vendor/bundle'
 volumes:
   api_ruby_gems:
     driver: local
