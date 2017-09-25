@@ -7,8 +7,8 @@ ENV RACK_ENV=production \
     DATABASE_URL=""
 WORKDIR $APP_DIR
 
-ADD Gemfile* $APP_DIR/
-ADD .bundle/config /usr/local/bundle/config
+COPY Gemfile* $APP_DIR/
+COPY .bundle/config /usr/local/bundle/config
 
 RUN apk --update add --virtual build_deps \
     build-base ruby-dev libc-dev linux-headers \
