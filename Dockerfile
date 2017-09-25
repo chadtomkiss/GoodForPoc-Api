@@ -15,7 +15,7 @@ RUN apk --update add --virtual build_deps \
     openssl-dev postgresql-dev libxml2-dev libxslt-dev && \
     bundle install
 
-ADD . $APP_DIR/
+COPY . $APP_DIR/
 VOLUME ["$APP_DIR/vendor/"]
 ENTRYPOINT ["bundle", "exec"]
 CMD ["puma", "-C", "config/puma.rb"]
