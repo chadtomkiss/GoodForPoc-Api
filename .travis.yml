@@ -20,7 +20,6 @@ addons:
   ssh_known_hosts:
     - dokku.goodforpocin.tech
     - github.com
-
 notifications:
   webhooks:
     urls:
