@@ -14,4 +14,8 @@ class App < Sinatra::Base
   configure :production, :development do
     enable :logging
   end
+
+  get '/ping' do
+    'pong'
+  end
 end
