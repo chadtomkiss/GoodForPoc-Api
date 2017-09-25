@@ -3,6 +3,7 @@
 
 directory ENV['APP_DIR']
 rackup "#{ENV['APP_DIR']}/config.ru"
+environment ENV['RACK_ENV']
 daemonize false
 pidfile '/var/run/puma.pid'
 state_path '/tmp/puma.state'
