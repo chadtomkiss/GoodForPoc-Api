@@ -1,7 +1,9 @@
 # frozen_string_literal: true
  
-require 'sinatra'
-require 'sinatra/base'
+ENV['RACK_ENV'] ||= 'production'
+
+require 'bundler'
+Bundler.require :default, ENV['RACK_ENV'].to_sym
 
 class App < Sinatra::Base
   # TODO: Create fixed list of helpers to load.

@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+ENV['RACK_ENV'] = 'test'
+
+require 'rspec'
+require 'rspec/expectations'
+require 'rack/test'
+require_relative File.join('..', 'app')
+
+module AppHelper
+  def app
+    return App.new
+  end
+end
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -18,4 +31,7 @@ RSpec.configure do |config|
   config.profile_examples = 5
   config.order = :random
   Kernel.srand config.seed
+
+  config.include Rack::Test::Methods
+  config.include AppHelper
 end
