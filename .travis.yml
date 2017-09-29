@@ -4,6 +4,7 @@ env:
   - ENV=test
 before_script:
   - bundle config --delete without
+install:
   - bundle install --verbose
 script:
   - bundle exec rake test
