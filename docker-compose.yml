@@ -13,6 +13,9 @@ services:
       - 'POSTGRES_PASSWORD="*(g4p0c_"'
     volumes:
       - 'api_data:/var/lib/postgresql'
+  mock_graphql_api:
+    build: ./mock-api
+    hostname: mock_graphql
   api:
     build: .
     environment:
@@ -23,6 +26,7 @@ services:
       - 'APP_DIR=/app'
     depends_on:
       - psql
+      - mock_graphql_api
     ports:
       - '${PORT-9292}:9292'
     volumes:
