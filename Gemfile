@@ -26,6 +26,9 @@ gem 'sequel-rake'
 # Task runner.
 gem 'rake'
 
+# HTTP Client tool.
+gem 'httparty'
+
 group :development do
   # Extra features for Rack.
   gem 'rack-contrib'
@@ -40,4 +43,7 @@ group :test do
 
   # Code style checking.
   gem 'rubocop'
+
+  # Capture HTTP calls.
+  gem 'vcr'
 end
