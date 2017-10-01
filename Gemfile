@@ -29,12 +29,12 @@ gem 'rake'
 # HTTP Client tool.
 gem 'httparty'
 
-group :development do
+group :development, optional: true do
   # Extra features for Rack.
   gem 'rack-contrib'
 end
 
-group :test do
+group :test, optional: true do
   # Test support for Rack.
   gem 'rack-test'
 

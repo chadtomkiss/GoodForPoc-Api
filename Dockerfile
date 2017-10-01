@@ -13,7 +13,7 @@ COPY .bundle/config /usr/local/bundle/config
 RUN apk --update add --virtual build_deps \
     build-base ruby-dev libc-dev linux-headers \
     openssl-dev postgresql-dev libxml2-dev libxslt-dev && \
-    bundle install
+    bundle install --deployment
 
 COPY . $APP_DIR/
 VOLUME ["$APP_DIR/vendor/"]
