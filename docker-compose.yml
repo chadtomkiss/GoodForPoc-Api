@@ -30,9 +30,6 @@ services:
       - '${PORT-9292}:9292'
     volumes:
       - '.:/app'
-      - 'api_ruby_vendor:/app/vendor'
 volumes:
-  api_ruby_vendor:
-    driver: local
   api_data:
     driver: local

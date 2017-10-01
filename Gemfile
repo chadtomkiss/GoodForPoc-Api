@@ -29,21 +29,16 @@ gem 'rake'
 # HTTP Client tool.
 gem 'httparty'
 
-group :development do
-  # Extra features for Rack.
-  gem 'rack-contrib'
-end
-
 group :test do
   # Test support for Rack.
-  gem 'rack-test'
+  gem 'rack-test', require: false
 
   # Test runner and framework.
-  gem 'rspec'
+  gem 'rspec', require: false
 
   # Code style checking.
-  gem 'rubocop'
+  gem 'rubocop', require: false
 
   # Capture HTTP calls.
-  gem 'vcr'
+  gem 'vcr', require: false
 end
