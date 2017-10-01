@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "node_modules/.bin/babel lib -d src",
-    "serve": "npm run build && node src/index.js"
+    "serve": "node src/index.js"
   },
   "author": "Chad Tomkiss <hello@chadtomkiss.co.uk>",
   "license": "ISC"
