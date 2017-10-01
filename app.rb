@@ -1,5 +1,5 @@
 # frozen_string_literal: true
- 
+
 ENV['RACK_ENV'] ||= 'production'
 
 require 'bundler'
@@ -19,5 +19,9 @@ class App < Sinatra::Base
 
   get '/ping' do
     'pong'
+  end
+
+  get '/gql' do
+    nil
   end
 end
