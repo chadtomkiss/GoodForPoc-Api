@@ -5,11 +5,12 @@ ENV['RACK_ENV'] = 'test'
 require 'rspec'
 require 'rspec/expectations'
 require 'rack/test'
+require 'vcr'
 require_relative File.join('..', 'app')
 
 module AppHelper
   def app
-    return App.new
+    App.new
   end
 end
 
@@ -34,4 +35,8 @@ RSpec.configure do |config|
 
   config.include Rack::Test::Methods
   config.include AppHelper
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = "fixtures/vcr_cassettes"
 end

@@ -8,6 +8,8 @@ RSpec.describe 'Route - GraphQL' do
       expect(last_response.status).to eq 200
     end
 
-    xit 'forwards requests to mock API'
+    it 'forwards requests to mock API' do
+      # TODO: Capture outgoing HTTP calls.
+    end
   end
 end
