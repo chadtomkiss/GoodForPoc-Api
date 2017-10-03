@@ -6,6 +6,7 @@ Sequel.migration do
       primary_key :id
 
       String :title, null: false
+      Integer :page, index: true, unique: true
       jsonb :attributes
     end
   end
