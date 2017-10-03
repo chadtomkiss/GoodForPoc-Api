@@ -5,7 +5,7 @@ env:
 before_script:
   - bundle config --delete without
 install:
-  - bundle install --verbose
+  - bundle install --verbose --no-deployment --with development test
 script:
   - bundle exec rake test
 deploy:
