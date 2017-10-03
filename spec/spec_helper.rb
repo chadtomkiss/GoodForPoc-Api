@@ -7,6 +7,14 @@ require 'rspec/expectations'
 require 'rack/test'
 require_relative File.join('..', 'app')
 
+require 'simplecov'
+SimpleCov.start
+
+if ENV['CI'] == 'true'
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
+
 module AppHelper
   def app
     return App.new
