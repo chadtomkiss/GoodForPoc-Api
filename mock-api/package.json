@@ -1,0 +1,20 @@
+{
+  "name": "good-for-poc-mock-api",
+  "version": "1.0.0",
+  "description": "Mock GraphQL API for Good for People of Color",
+  "main": "src/index.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "express": "^4.16.1",
+    "json-graphql-server": "^1.0.1",
+    "pm2": "^2.7.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel lib -d src",
+    "serve": "pm2 start ecosystem.config.js"
+  },
+  "author": "Chad Tomkiss <hello@chadtomkiss.co.uk>",
+  "license": "ISC"
+}

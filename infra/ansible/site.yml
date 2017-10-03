@@ -1,0 +1,16 @@
+---
+# Author: Jacky Alcine <jacky@goodforpocin.tech>
+# Date:   2017-09-24 12:33:15 PDT
+
+- hosts: all
+  gather_facts: True
+  become_method: sudo
+  roles:
+    - 'jnv.unattended-upgrades'
+    - 'geerlingguy.firewall'
+    - 'dev-sec.ssh-hardening'
+    - 'kamaln7.swapfile'
+    - 'angstwad.docker_ubuntu'
+    - 'dev-sec.os-hardening'
+  vars_files:
+    - vars/site.yml

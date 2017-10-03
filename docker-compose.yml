@@ -10,19 +10,25 @@ services:
     image: postgres:alpine
     environment:
       - 'POSTGRES_USER=g4poc'
-      - 'POSTGRES_PASSWORD="*(g4p0c_"'
+      - 'POSTGRES_PASSWORD=*(g4p0c_'
     volumes:
       - 'api_data:/var/lib/postgresql'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
   api:
     build: .
     environment:
       - 'PORT=9292'
       - 'RACK_ENV=development'
       - 'BUNDLE_CACHE=/app/vendor/cache'
-      - 'DATABASE_URL=psql://psql:5432'
+      - 'DATABASE_URL=postgresql://g4poc:*(g4p0c_@psql:5432/g4poc'
       - 'APP_DIR=/app'
     depends_on:
-      - psql
+      psql:
+        condition: service_healthy
     ports:
       - '${PORT-9292}:9292'
     volumes:
