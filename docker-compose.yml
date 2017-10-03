@@ -29,8 +29,6 @@ services:
     depends_on:
       psql:
         condition: service_healthy
-    links:
-      - psql
     ports:
       - '${PORT-9292}:9292'
     volumes:
