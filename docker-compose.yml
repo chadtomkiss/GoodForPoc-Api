@@ -13,6 +13,11 @@ services:
       - 'POSTGRES_PASSWORD=*(g4p0c_'
     volumes:
       - 'api_data:/var/lib/postgresql'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
   api:
     build: .
     environment:
@@ -22,6 +27,9 @@ services:
       - 'DATABASE_URL=postgresql://g4poc:*(g4p0c_@psql:5432/g4poc'
       - 'APP_DIR=/app'
     depends_on:
+      psql:
+        condition: service_healthy
+    links:
       - psql
     ports:
       - '${PORT-9292}:9292'
