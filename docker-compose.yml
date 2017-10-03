@@ -17,11 +17,9 @@ services:
   mock_graphql_api:
     build: ./mock-api
     hostname: mock_graphql
-    command: serve:foreground
+    command: serve-foreground
     environment:
       - 'DEBUG="*"'
-    volumes:
-      - './mock_api:/usr/src/app'
   api:
     build: .
     environment:
