@@ -10,7 +10,7 @@ services:
     image: postgres:alpine
     environment:
       - 'POSTGRES_USER=g4poc'
-      - 'POSTGRES_PASSWORD="*(g4p0c_"'
+      - 'POSTGRES_PASSWORD=*(g4p0c_'
     volumes:
       - 'api_data:/var/lib/postgresql'
   api:
@@ -19,7 +19,7 @@ services:
       - 'PORT=9292'
       - 'RACK_ENV=development'
       - 'BUNDLE_CACHE=/app/vendor/cache'
-      - 'DATABASE_URL=psql://psql:5432'
+      - 'DATABASE_URL=postgresql://g4poc:*(g4p0c_@psql:5432/g4poc'
       - 'APP_DIR=/app'
     depends_on:
       - psql
