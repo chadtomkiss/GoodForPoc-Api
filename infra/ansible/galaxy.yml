@@ -1,0 +1,13 @@
+---
+- src: angstwad.docker_ubuntu
+  version: v2.5.2
+- src: dev-sec.os-hardening
+  version: 4.2.0
+- src: dev-sec.ssh-hardening
+  version: 4.3.0
+- src: jnv.unattended-upgrades
+  version: v1.3.0
+- src: kamaln7.swapfile
+  version: 4850d8a0ec35854596a4e6b8f78242147db31471
+- src: geerlingguy.firewall
+  version: 2.3.0
