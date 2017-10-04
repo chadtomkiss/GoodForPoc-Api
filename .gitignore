@@ -2,3 +2,4 @@
 bin/
 vendor/*
 site.retry
+coverage/
