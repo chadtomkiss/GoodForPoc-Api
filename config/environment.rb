@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-#
-ENV['RACK_ENV'] ||= 'production'
+
+# Check we have the necessary ENV vars set
+['RACK_ENV', 'DATABASE_URL'].each { |v| raise("#{v} is not set.") if ENV[v].nil? }
 
 require 'bundler'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
