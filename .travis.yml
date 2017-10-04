@@ -1,9 +1,13 @@
 ---
 language: ruby
+services:
+  - postgresql
 env:
   - ENV=test
+  - DATABASE_URL=postgresql://postgres@localhost/good4poc_test
 before_script:
   - bundle config --delete without
+  - psql -c 'create database good4poc_test;' -U postgres
 install:
   - bundle install --verbose --no-deployment --with development test
 script:
