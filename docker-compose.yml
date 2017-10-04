@@ -11,9 +11,14 @@ services:
     hostname: data
     environment:
       - 'POSTGRES_USER=g4poc'
-      - 'POSTGRES_PASSWORD="*(g4p0c_"'
+      - 'POSTGRES_PASSWORD=*(g4p0c_'
     volumes:
       - 'api_data:/var/lib/postgresql'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
   mock_graphql_api:
     build: ./mock-api
     hostname: mock_graphql
@@ -25,12 +30,13 @@ services:
     environment:
       - 'PORT=9292'
       - 'RACK_ENV=development'
-      - 'DATABASE_URL=psql://data:5432'
+      - 'BUNDLE_CACHE=/app/vendor/cache'
+      - 'DATABASE_URL=psql://psql:5432'
       - 'APP_DIR=/app'
       - 'MOCK_GRAPHQL_SERVER_HOST=http://mock_graphql_api:3000'
     depends_on:
-      - psql
-      - mock_graphql_api
+      psql:
+        condition: service_healthy
     links:
       - psql
       - mock_graphql_api

@@ -41,4 +41,10 @@ group :test do
 
   # Capture HTTP calls.
   gem 'vcr', require: false
+
+  # Coverage detection.
+  gem 'simplecov', require: false
+
+  # Remote collection of coverage.
+  gem 'codecov', require: false
 end
