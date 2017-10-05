@@ -6,6 +6,7 @@ require 'rspec'
 require 'rspec/expectations'
 require 'rack/test'
 require 'vcr'
+require 'webmock/rspec'
 require_relative File.join('..', 'app')
 
 require 'simplecov'
@@ -45,6 +46,8 @@ RSpec.configure do |config|
   config.include AppHelper
 end
 
-VCR.configure do |config|
-  config.cassette_library_dir = "fixtures/vcr_cassettes"
+VCR.configure do |c|
+  c.cassette_library_dir = 'fixtures/vcr_cassettes'
+  c.configure_rspec_metadata!
+  c.hook_into :webmock
 end

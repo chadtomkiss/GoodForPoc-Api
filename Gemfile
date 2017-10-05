@@ -47,4 +47,7 @@ group :test do
 
   # Remote collection of coverage.
   gem 'codecov', require: false
+
+  # Mock out HTTP requests.
+  gem 'webmock', require: false
 end
