@@ -13,7 +13,7 @@ env:
 
 install:
   - docker-compose build
-  - docker-compose run -T --entrypoint sh api "bundle install --verbose --no-deployment --with development test"
+  - docker-compose run --entrypoint "/bin/sh -c" api "bundle install --verbose --no-deployment --with development test"
 
 before_script:
   - docker-compose up -d
