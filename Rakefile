@@ -19,9 +19,6 @@ namespace :db do
 
     Sequel.extension :seed
     Sequel::Seed.setup(ENV['RACK_ENV'].to_sym || :development)
-
-    DB[:schema_seeds].delete
-
     Sequel::Seeder.apply(DB, "db/seeds")
 
     puts 'The database was seeded!'
