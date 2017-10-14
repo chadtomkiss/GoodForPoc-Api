@@ -5,27 +5,38 @@ services:
   - postgresql
   - docker
 env:
-  - RACK_ENV=test DATABASE_URL=postgresql://postgres@localhost/good4poc_test DOCKER_COMPOSE_VERSION=1.4.2
-before_script:
-  - docker-compose build
-  - docker-compose up -d
+  global:
+    - RACK_ENV: test
+    - DOCKER_COMPOSE_VERSION: 1.16.1
+    - DOCKER_VERSION: 17.03.0-ce
+    - DATABASE_URL: postgresql://postgres@localhost/good4poc_test
+
 install:
-  - docker-compose run --entrypoint sh api bundle install --verbose --no-deployment --with development test
+  - docker-compose build
+  - docker-compose run -T --entrypoint sh api "bundle install --verbose --no-deployment --with development test"
+
+before_script:
+  - docker-compose up -d
 script:
   - docker-compose run api rake test
+
 deploy:
   - provider: script
     script: scripts/deploy prod
     on:
       branch: master
+      condition: $TRAVIS_PULL_REQUEST = false
   - provider: script
     script: scripts/deploy staging
     on:
       branch: develop
+      condition: $TRAVIS_PULL_REQUEST = false
+
 addons:
   ssh_known_hosts:
     - dokku.goodforpocin.tech
     - github.com
+
 notifications:
   webhooks:
     urls:
