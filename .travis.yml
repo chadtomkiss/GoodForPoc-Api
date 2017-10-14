@@ -6,7 +6,7 @@ env:
   - RACK_ENV=test DATABASE_URL=postgresql://postgres@localhost/good4poc_test
 before_script:
   - bundle config --delete without
-  - cd mock-api && npm install && npm run build && npm run serve
+  - cd mock-api && npm install && npm run build && npm run serve:foreground
   - psql -c 'create database good4poc_test;' -U postgres
 install:
   - bundle install --verbose --no-deployment --with development test
