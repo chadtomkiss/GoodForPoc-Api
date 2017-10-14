@@ -25,10 +25,10 @@ class App < Sinatra::Base
   post '/gql' do
     mock_graphql_host = ENV.fetch('MOCK_GRAPHQL_SERVER_HOST',
                                   'http://localhost:3000')
-    query = params.fetch('q', {})
-
+    query = params.fetch('q', '')
+    route = "#{mock_graphql_host}/graphql?query=#{query}"
     begin
-      resp = HTTParty.get("#{mock_graphql_host}/graphql/?query=#{query}")
+      resp = HTTParty.get(route)
       [resp.code, resp.body]
     rescue => e
       [500, JSON.dump(error: e)]

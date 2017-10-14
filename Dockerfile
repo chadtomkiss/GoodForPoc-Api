@@ -16,4 +16,5 @@ RUN apk --update add --virtual build_deps \
 
 COPY . $APP_DIR/
 VOLUME ["$APP_DIR/"]
-CMD ["bin/puma", "-C", "config/puma.rb"]
+ENTRYPOINT ["bundle", "exec"]
+CMD ["puma", "-C", "config/puma.rb"]

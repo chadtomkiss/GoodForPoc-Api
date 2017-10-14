@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://mock_graphql_api:3000/graphql/?query=%7B%7D
+    uri: http://mock_graphql_api:3000/graphql?query=query%20%7B%20allLocations%20%7B%20country%20%7D%20%7D
     body:
       encoding: US-ASCII
       string: ''
@@ -15,25 +15,24 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       X-Powered-By:
       - Express
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '138'
+      - '45'
       Etag:
-      - W/"8a-Nr3bNXAdODFG6KBMtvdmIHYFtfQ"
+      - W/"2d-J4k6Ta3bWUhWdXh8kBQI4E+1KL0"
       Date:
-      - Thu, 05 Oct 2017 20:39:42 GMT
+      - Sat, 14 Oct 2017 00:15:25 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"errors":[{"message":"Syntax Error GraphQL request (1:2) Expected
-        Name, found }\n\n1: {}\n    ^\n","locations":[{"line":1,"column":2}]}]}'
+      string: '{"data":{"allLocations":[{"country":"USA"}]}}'
     http_version: 
-  recorded_at: Thu, 05 Oct 2017 20:39:42 GMT
+  recorded_at: Sat, 14 Oct 2017 00:15:25 GMT
 recorded_with: VCR 3.0.3
