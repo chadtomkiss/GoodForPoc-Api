@@ -18,7 +18,7 @@ namespace :db do
     require 'sequel/extensions/seed'
 
     Sequel.extension :seed
-    Sequel::Seed.setup(ENV['RACK_ENV'].to_sym || :development)
+    Sequel::Seed.setup(ENV['RACK_ENV'].to_sym)
     Sequel::Seeder.apply(DB, "db/seeds")
 
     puts 'The database was seeded!'
