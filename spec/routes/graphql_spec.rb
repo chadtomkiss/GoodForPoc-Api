@@ -3,10 +3,10 @@
 require_relative '../spec_helper'
 
 RSpec.describe 'Route - GraphQL', vcr: true, no_ci: true do
-  describe 'POST /gql' do
+  describe 'GET /gql' do
     before do
-      VCR.use_cassette('post_gql') do
-        post '/gql', q: CGI.escape('query { allLocations { country } }')
+      VCR.use_cassette('get_gql') do
+        get '/gql', q: CGI.escape('query { allLocations { country } }')
       end
     end
 

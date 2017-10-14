@@ -5,3 +5,4 @@ mock-api/*
 site.retry
 infra
 >>>>>>> origin/develop
+vendor
