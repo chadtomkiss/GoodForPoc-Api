@@ -1,21 +1,12 @@
 ---
 language: ruby
-sudo: required
 services:
-  - docker
+  - postgresql
+
 env:
   global:
     - RACK_ENV: test
-    - DOCKER_COMPOSE_VERSION: 1.16.1
-    - DOCKER_VERSION: 17.03.0-ce
     - DATABASE_URL: postgresql://postgres@localhost/good4poc_test
-
-install:
-  - docker-compose up --build -d
-before_script:
-  - docker-compose run --entrypoint "/bin/sh -c" api "bundle install --verbose --with development test"
-script:
-  - docker-compose run --entrypoint "/bin/sh -c" api "rake test"
 
 deploy:
   - provider: script
@@ -41,3 +32,11 @@ notifications:
     on_success: always
     on_failure: always
     on_start: always
+
+before_script:
+  - cd mock-api && npm install graphql && npm run build && npm run serve
+  - psql -c 'create database good4poc_test;' -U postgres
+
+script:
+  - bundle install --with development test
+  - bundle exec rake test
