@@ -4,6 +4,7 @@ env:
   - ENV=test
 before_script:
   - bundle config --delete without
+  - cd mock-api && npm install && npm run serve
 install:
   - bundle install --verbose --no-deployment --with development test
 script:

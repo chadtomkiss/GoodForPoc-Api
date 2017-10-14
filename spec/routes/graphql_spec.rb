@@ -2,7 +2,7 @@
 
 require_relative '../spec_helper'
 
-RSpec.describe 'Route - GraphQL', vcr: true, no_ci: true do
+RSpec.describe 'Route - GraphQL', vcr: true, no_ci: false do
   describe 'POST /gql' do
     before do
       VCR.use_cassette('post_gql') do
