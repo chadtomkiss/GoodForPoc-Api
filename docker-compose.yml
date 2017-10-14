@@ -8,6 +8,7 @@ version: '2.1'
 services:
   psql:
     image: postgres:alpine
+    hostname: data
     environment:
       - 'POSTGRES_USER=g4poc'
       - 'POSTGRES_PASSWORD=*(g4p0c_'
@@ -18,27 +19,31 @@ services:
       interval: 60s
       timeout: 10s
       retries: 3
+  mock_graphql_api:
+    build: ./mock-api
+    hostname: mock_graphql
+    command: serve-foreground
+    environment:
+      - 'DEBUG="*"'
   api:
     build: .
     environment:
       - 'PORT=9292'
       - 'RACK_ENV=development'
       - 'BUNDLE_CACHE=/app/vendor/cache'
-      - 'DATABASE_URL=postgresql://g4poc:*(g4p0c_@psql:5432/g4poc'
+      - 'DATABASE_URL=postgres://g4poc:*(g4p0c_@psql:5432'
       - 'APP_DIR=/app'
+      - 'MOCK_GRAPHQL_SERVER_HOST=http://mock_graphql_api:3000'
     depends_on:
       psql:
         condition: service_healthy
+    links:
+      - psql
+      - mock_graphql_api
     ports:
       - '${PORT-9292}:9292'
     volumes:
       - '.:/app'
-      - 'api_ruby_cache:/app/vendor/cache'
-      - 'api_ruby_gems:/app/vendor/bundle'
 volumes:
-  api_ruby_gems:
-    driver: local
-  api_ruby_cache:
-    driver: local
   api_data:
     driver: local

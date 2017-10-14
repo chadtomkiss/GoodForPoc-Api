@@ -35,24 +35,28 @@ gem 'faker'
 # Task runner.
 gem 'rake'
 
-group :development do
-  # Extra features for Rack.
-  gem 'rack-contrib'
-end
+# HTTP Client tool.
+gem 'httparty'
 
 group :test do
   # Test support for Rack.
-  gem 'rack-test'
+  gem 'rack-test', require: false
 
   # Test runner and framework.
-  gem 'rspec'
+  gem 'rspec', require: false
 
   # Code style checking.
-  gem 'rubocop'
+  gem 'rubocop', require: false
+
+  # Capture HTTP calls.
+  gem 'vcr', require: false
 
   # Coverage detection.
-  gem 'simplecov'
+  gem 'simplecov', require: false
 
   # Remote collection of coverage.
-  gem 'codecov'
+  gem 'codecov', require: false
+
+  # Mock out HTTP requests.
+  gem 'webmock', require: false
 end

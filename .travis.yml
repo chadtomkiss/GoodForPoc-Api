@@ -2,28 +2,29 @@
 language: ruby
 services:
   - postgresql
+
 env:
-  - RACK_ENV=test DATABASE_URL=postgresql://postgres@localhost/good4poc_test
-before_script:
-  - bundle config --delete without
-  - psql -c 'create database good4poc_test;' -U postgres
-install:
-  - bundle install --verbose --no-deployment --with development test
-script:
-  - bundle exec rake test
+  global:
+    - RACK_ENV: test
+    - DATABASE_URL: postgresql://postgres@localhost/good4poc_test
+
 deploy:
   - provider: script
     script: scripts/deploy prod
     on:
       branch: master
+      condition: $TRAVIS_PULL_REQUEST = false
   - provider: script
     script: scripts/deploy staging
     on:
       branch: develop
+      condition: $TRAVIS_PULL_REQUEST = false
+
 addons:
   ssh_known_hosts:
     - dokku.goodforpocin.tech
     - github.com
+
 notifications:
   webhooks:
     urls:
@@ -31,3 +32,12 @@ notifications:
     on_success: always
     on_failure: always
     on_start: always
+
+before_script:
+  - psql -c 'create database good4poc_test;' -U postgres
+
+script:
+  - bundle exec rake test
+
+install:
+  - bundle install --with development test
