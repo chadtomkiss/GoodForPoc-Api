@@ -2,9 +2,7 @@
 
 ENV['RACK_ENV'] ||= 'production'
 
-require 'bundler'
-require 'json'
-Bundler.require :default, ENV['RACK_ENV'].to_sym
+require_relative 'config/environment'
 
 class App < Sinatra::Base
   # TODO: Create fixed list of helpers to load.

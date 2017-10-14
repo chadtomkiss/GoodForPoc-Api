@@ -12,9 +12,9 @@ WORKDIR $APP_DIR
 RUN apk --update add --virtual build_deps \
     build-base ruby-dev libc-dev linux-headers \
     openssl-dev postgresql-dev libxml2-dev libxslt-dev && \
-    bundle install --binstubs=bin
+    bundle install --binstubs=bin --deployment
 
-COPY . $APP_DIR/
+COPY . .
 VOLUME ["$APP_DIR/"]
 ENTRYPOINT ["bundle", "exec"]
 CMD ["puma", "-C", "config/puma.rb"]
