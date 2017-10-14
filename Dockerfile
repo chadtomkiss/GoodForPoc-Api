@@ -6,15 +6,17 @@ ENV RACK_ENV=production \
     APP_DIR=/app \
     DATABASE_URL=""
 
+RUN apk --update add --virtual build_deps \
+    build-base ruby-dev libc-dev linux-headers \
+    openssl-dev postgresql-dev libxml2-dev libxslt-dev
+
 COPY ["Gemfile*", "$APP_DIR/"]
 WORKDIR $APP_DIR
 
-RUN apk --update add --virtual build_deps \
-    build-base ruby-dev libc-dev linux-headers \
-    openssl-dev postgresql-dev libxml2-dev libxslt-dev && \
-    bundle install --binstubs=bin --deployment
+RUN bundle install --binstubs=bin --deployment
 
 COPY . .
 VOLUME ["$APP_DIR/"]
-ENTRYPOINT ["bundle", "exec"]
+
+ENTRYPOINT ["/bin/sh", "-c", "bundle", "exec"]
 CMD ["puma", "-C", "config/puma.rb"]
