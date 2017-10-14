@@ -23,6 +23,15 @@ gem 'sequel'
 # Tasks for Postgres.
 gem 'sequel-rake'
 
+# Seed for Postgres
+gem 'sequel-seed'
+
+# Generate slugs for Models
+gem 'sequel_sluggable'
+
+# Faker for Seeds
+gem 'faker'
+
 # Task runner.
 gem 'rake'
 
