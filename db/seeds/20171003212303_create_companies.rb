@@ -1,6 +1,6 @@
 Sequel.seed(:development, :test) do # Applies only to "development" and "test" environments
   def run
-    [1..10].each do |i|
+    [1..(30 + rand(30))].each do |i|
       @company = Company.find_or_create(name: Faker::Company.name) do |company|
         company.description = Faker::Lorem.paragraph
         company.website_uri = 'https://' << Faker::Internet.domain_name
