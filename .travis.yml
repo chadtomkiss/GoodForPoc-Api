@@ -34,7 +34,7 @@ notifications:
     on_start: always
 
 before_script:
-  - cd mock-api && npm install graphql && npm install && npm run build && npm run serve
+  - cd mock-api && npm install graphql && npm install && npm run build && node src/index.js &
   - psql -c 'create database good4poc_test;' -U postgres
 
 script:
