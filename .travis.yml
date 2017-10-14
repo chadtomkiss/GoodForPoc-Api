@@ -13,7 +13,7 @@ env:
 install:
   - docker-compose up --build -d
 before_script:
-  - docker-compose run --entrypoint "/bin/sh -c" api "bundle install --verbose --no-deployment --with development test"
+  - docker-compose run --entrypoint "/bin/sh -c" api "bundle install --verbose --with development test"
 script:
   - docker-compose run --entrypoint "/bin/sh -c" api "rake test"
 
