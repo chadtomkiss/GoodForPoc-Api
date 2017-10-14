@@ -1,4 +1,4 @@
 mock-api/*
 site.retry
 infra
-vendor
+vendor/
