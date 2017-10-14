@@ -12,12 +12,12 @@ env:
 
 install:
   - docker-compose build
-  - docker-compose run --entrypoint "/bin/sh -c" api "bundle install --verbose --no-deployment --with development test"
+  - docker-compose up -d
 
 before_script:
-  - docker-compose up -d
+  - docker-compose run --entrypoint "/bin/sh -c" api "bundle install --verbose --no-deployment --with development test"
 script:
-  - docker-compose run api rake test
+  - docker-compose run --entrypoint "/bin/sh -c" api "rake test"
 
 deploy:
   - provider: script
