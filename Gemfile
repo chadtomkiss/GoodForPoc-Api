@@ -41,8 +41,10 @@ gem 'httparty'
 # Enable CORS support.
 gem 'sinatra-cross_origin', '~> 0.3.1'
 
-# Audit Gems
-gem 'bundler-audit', '~> 0.6.0'
+group :development, :test do
+  # Audit Gems for vulnerabilities
+  gem 'bundler-audit', '~> 0.6.0'
+end
 
 group :test do
   # Test support for Rack.
