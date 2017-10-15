@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 mock-api/*
-||||||| merged common ancestors
-=======
 site.retry
 infra
->>>>>>> origin/develop
+vendor/

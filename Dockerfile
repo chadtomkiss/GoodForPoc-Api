@@ -18,5 +18,5 @@ RUN bundle install --binstubs=bin --deployment
 COPY . .
 VOLUME ["$APP_DIR/"]
 
-ENTRYPOINT ["/bin/sh", "-c", "bundle", "exec"]
+ENTRYPOINT ["bundle", "exec"]
 CMD ["puma", "-C", "config/puma.rb"]

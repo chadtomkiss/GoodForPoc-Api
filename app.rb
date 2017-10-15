@@ -16,15 +16,23 @@ class App < Sinatra::Base
     enable :logging
   end
 
+  enable :cross_origin
+
+  set :allow_origin, :any
+  set :allow_methods, [:get, :post, :put, :options]
+  set :allow_credentials, true
+  set :max_age, 1728000
+  set :expose_headers, ['Content-Type']
+
   get '/ping' do
     'pong'
   end
 
-  post '/gql' do
-    mock_graphql_host = ENV.fetch('MOCK_GRAPHQL_SERVER_HOST',
-                                  'http://localhost:3000')
-    query = params.fetch('q', '')
+  get '/gql' do
+    mock_graphql_host = ENV.fetch('MOCK_GRAPHQL_SERVER_HOST', 'http://localhost:3000')
+    query = params.fetch('query', '')
     route = "#{mock_graphql_host}/graphql?query=#{query}"
+
     begin
       resp = HTTParty.get(route)
       [resp.code, resp.body]

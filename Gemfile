@@ -38,6 +38,9 @@ gem 'rake'
 # HTTP Client tool.
 gem 'httparty'
 
+# Enable CORS support.
+gem 'sinatra-cross_origin', '~> 0.3.1'
+
 group :test do
   # Test support for Rack.
   gem 'rack-test', require: false
