@@ -31,7 +31,7 @@ class App < Sinatra::Base
   get '/gql' do
     mock_graphql_host = ENV.fetch('MOCK_GRAPHQL_SERVER_HOST',
                                   'http://localhost:3000')
-    query = params.fetch('q', '')
+    query = params.fetch('query', '')
     route = "#{mock_graphql_host}/graphql?query=#{query}"
     begin
       resp = HTTParty.get(route)
