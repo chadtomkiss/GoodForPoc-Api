@@ -9,9 +9,6 @@
 require 'bundler'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
 
-# Load Redis
-require 'redis-store'
-
 # Connect to DB
 DB = Sequel.connect(ENV['DATABASE_URL'])
 
