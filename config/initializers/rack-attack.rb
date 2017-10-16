@@ -1,6 +1,5 @@
 class Rack::Attack
-
-  Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
+  Rack::Attack.cache.store = ::Redis::Store.new :host => 'redis'
 
   throttle('req/ip', limit: 10, period: 10) do |req|
     req.ip
