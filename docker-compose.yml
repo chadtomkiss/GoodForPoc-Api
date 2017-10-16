@@ -20,7 +20,7 @@ services:
       timeout: 10s
       retries: 3
   redis:
-    image: "redis:alpine"
+    image: redis:alpine
   mock_graphql_api:
     build: ./mock-api
     hostname: mock_graphql
