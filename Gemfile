@@ -11,8 +11,8 @@ gem 'puma'
 # Micro web-framework of choice.
 gem 'sinatra'
 
-# Active Support
-gem 'activesupport'
+# Redis
+gem 'redis-store'
 
 # Secure secret generation.
 gem 'sysrandom'
