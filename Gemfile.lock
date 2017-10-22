@@ -30,6 +30,8 @@ GEM
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
+    rack-attack (5.0.1)
+      rack
     rack-protection (2.0.0)
       rack
     rack-test (0.7.0)
@@ -37,6 +39,9 @@ GEM
     rainbow (2.2.2)
       rake
     rake (12.1.0)
+    redis (4.0.1)
+    redis-store (1.4.1)
+      redis (>= 2.2, < 5)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -98,8 +103,10 @@ DEPENDENCIES
   httparty
   pg
   puma
+  rack-attack
   rack-test
   rake
+  redis-store
   rspec
   rubocop
   sequel
