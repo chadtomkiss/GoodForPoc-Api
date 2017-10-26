@@ -14,6 +14,9 @@ class App < Sinatra::Base
   #= end
   configure :production, :development do
     enable :logging
+
+    require_relative 'config/initializers/rack-attack'
+    use Rack::Attack
   end
 
   enable :cross_origin

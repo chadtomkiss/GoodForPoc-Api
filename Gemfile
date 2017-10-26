@@ -11,6 +11,9 @@ gem 'puma'
 # Micro web-framework of choice.
 gem 'sinatra'
 
+# Redis
+gem 'redis-store'
+
 # Secure secret generation.
 gem 'sysrandom'
 
@@ -41,8 +44,11 @@ gem 'httparty'
 # Enable CORS support.
 gem 'sinatra-cross_origin', '~> 0.3.1'
 
+# Block & Throttle requests.
+gem 'rack-attack'
+
 group :development, :test do
-  # Audit Gems for vulnerabilities
+  # Audit gems for vulnerabilities.
   gem 'bundler-audit', '~> 0.6.0'
 end
 
